@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+ <meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi ">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{dede:global.cfg_webname/}</title>
+<meta name='Keywords' content={dede:global.cfg_keywords/}>
+<meta name='Description' content={dede:global.cfg_description/}>
+<script type=text/JavaScript src=https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js></script>
+<script type=text/JavaScript src={dede:global.cfg_templets_skin/}/dist/js/index.min.js></script>
+<link rel=stylesheet type=text/css href={dede:global.cfg_templets_skin/}/dist/css/public.min.css>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<main>
+<article class="index_headnav">
+<ul class="headnav_menu">
+{dede:arclist orderby ='pubdate' titlelen='999' limit='1000,1000' }
+<li class="headnav_item"><strong><a href="[field:typeurl/]">『[field:typename/]』</a></strong><a href="[field:arcurl/]">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</article>
+<article class="index_carousel">
+<div class="carousel_news1">
+<ul class="pic_menu">
+	{dede:arclist  orderby ='pubdate' titlelen='999' limit='1,4'}
+	<li class="pic_item"><a href="[field:arcurl/]"><img src="[field:picname/]" width=670 height=365 alt="[field:title/]"><span>[field:typename/]-[field:title/]-iPhone中文资讯网</span></a></li>
+	{/dede:arclist}
+</ul>
+<ul class="font_menu">
+	{dede:arclist  orderby ='pubdate' titlelen='999' limit='1,4'}
+	<li class="font_item"><a href="[field:arcurl/]">[field:typename/]-[field:title/]-iPhone中文资讯网</a></li>
+	{/dede:arclist}
+</ul>
+</div>
+<div class="carousel_news2">
+<div class="news2_head"><span>今日头条</span></div>
+<ul class="news2_menu">
+	{dede:arclist  orderby ='pubdate' titlelen='999' limit='5,5'}
+	<li class="news2_item">
+		<h3><a href="[field:arcurl/]">[field:title/]</a></h3>
+		<p>[field:description function="cn_substr(@me,300)"/]...</p>
+	</li>
+	{/dede:arclist}
+</ul>
+</div>
+</article>
+<article class="index_article">
+<div class="article_content">
+{dede:channelartlist}
+<div class="article_con">
+	<div class="con_head"><h2><a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a></h2></div>
+	<ul class="con_menu">
+		{dede:arclist row='1'titlelen='999'  limit='1,6'}
+		<li class="con_item">
+			<dl>
+				<dt><a href="[field:arcurl /]"><img width="150" height="100" src="[field:picname/]" alt="[field:title/]"></a></dt>
+				<dd>
+					<h3><a href="[field:arcurl/]">[field:title/]</a></h3>
+					<p>[field:description function="cn_substr(@me,120)"/]...</p>
+				</dd>
+			</dl>
+		</li>
+		{/dede:arclist}
+	</ul>
+</div>
+{/dede:channelartlist}
+</div>
+<aside class="index_aside">
+<div class="aside_follow">
+	<div class="head"><span>关注我们</span></div>
+	<div class="follow_wx"><img src="{dede:global.cfg_templets_skin/}/dist/images/wx.jpg" alt="iPhone资讯网"></div>
+</div>
+<div class="aside_news">
+	<div class="head"><span>最新文章</span></div>
+	<ul class="news_menu">
+		{dede:arclist limit='30,10' titlelen='999'}
+		<li class="news_item"><a href="[field:arcurl/]">[field:title/]</a></li>
+		{/dede:arclist}
+	</ul>
+</div>
+</aside>
+</article>
+
+</main>
+{dede:include filename="footer.htm"/}
+</body>
+</html>

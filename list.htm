@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{dede:field.seotitle /}</title>
+<meta name='Keywords' content={dede:field name='keywords'/}>
+<meta name='Description' content={dede:field name='description'  function='html2text(@me)'/}>
+<script type=text/JavaScript src=https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js></script>
+<script type=text/JavaScript src={dede:global.cfg_templets_skin/}/dist/js/index.min.js></script>
+<link rel=stylesheet type=text/css href={dede:global.cfg_templets_skin/}/dist/css/public.min.css>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<main>
+<article class="list_content clearfix">
+<div class="list_news">
+<h1 class="head"><a href="{dede:field name='typelimk'/}">{dede:field name='typename'/}</a></h1>
+<ul class="news_menu">
+{dede:list pagesize ='16'}
+<li class="news_item">
+<dl>
+<dt><a href="[field:arcurl/]"><img width="250" src="[field:picname/]" alt="[field:typename/][field:title/]"><strong>[field:typename/]</strong></a></dt>
+<dd>
+	<h2><a href="[field:arcurl/]">[field:typename/]|[field:title/]</a></h2>
+	<p>[field:description function="cn_substr(@me,300)"/]...</p>
+	<div><span class="date">更新时间:[field:pubdate function="GetDateTimeMK(@me)" /]</span><span class="views">点击:[field:click/]</span></div>
+</dd>
+</dl>
+</li>
+{/dede:list}
+</ul>
+</div>
+<aside class="list_aside">
+<div class="pic"><img src="{dede:global.cfg_templets_skin/}/dist/images/wx.jpg" alt="iPhone资讯网"></div>
+<div class="aside_push">
+<div class="head"><span>编辑推荐</span></div>
+<ul class="push_menu">
+{dede:arclist row='15' titlelen='999'  orderby ='rand'}
+<li class="push_item"><img width="260" height="130" src="[field:picname/]" alt="[field:title/]"><a href="">[field:typename/][field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+</aside>
+</article>
+<article class="list_page">
+<ul class="pagelist">
+{dede:pagelist listitem="index,end,pre,next,pageno" listsize="1"/}
+</ul>
+</article>
+</main>
+{dede:include filename="footer.htm"/}
+</body>
+</html>
